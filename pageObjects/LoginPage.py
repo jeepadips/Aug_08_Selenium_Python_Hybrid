@@ -6,7 +6,7 @@ class LoginPage:
     textbox_username_name = "username"
     #textbox_password_id="Password"
     textbox_password_name = "password"
-    button_login_xpath="//input[@type='submit']"
+    button_login_tagname="submit"
 
     link_logout_linktext="Logout"
 
@@ -22,7 +22,7 @@ class LoginPage:
         self.driver.find_element(by=By.NAME, value=self.textbox_password_name).send_keys(password)
 
     def clickLogin(self):
-        self.driver.find_element_by_xpath(self.button_login_xpath).click()
+        self.driver.find_element_by_css_selector(self.button_login_tagname).click()
 
     def clickLogout(self):
         self.driver.find_element_by_link_text(self.link_logout_linktext).click()

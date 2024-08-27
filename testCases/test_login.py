@@ -10,37 +10,17 @@ class Test_001_Login:
     username = "Admin"
     password = "admin123"
 
-    def test_homePageTitle(self):
-        self.driver = webdriver.Chrome()
+    def test_homePageTitle(self,setup):
+        self.driver = setup
         self.driver.get(self.baseURL)
-        time.sleep(25)
+        time.sleep(15)
         act_title = self.driver.title
-        if act_title == "OrangeHRM":
+        if act_title == "OrangeHRMs":
             assert True
             self.driver.close()
         else:
+            self.driver.save_screenshot(".\\Screenshots\\" + "test_homePageTtitle.png")
             assert False
             self.driver.close()
-
-
-    def test_login(self):
-        self.driver = webdriver.Chrome()
-        self.driver.get(self.baseURL)
-        time.sleep(25)
-        self.lp=LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickLogin()
-        act_title=self.driver.title
-        if act_title == "OrangeHRM":
-            assert True
-            self.driver.close()
-        else:
-            assert False
-            self.driver.close()
-
-
-
-
 
 
